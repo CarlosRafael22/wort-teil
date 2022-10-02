@@ -6,12 +6,17 @@ import NOUNS from './src/constants/noun';
 
 import AdjectivePage from './src/pages/AdjectivePage';
 import {ADJECTIVES} from './src/constants/adjective';
-import {AdjectiveType, NounType} from './src/constants/types';
-import {isNoun} from './src/constants/utils';
+
+import VerbPage from './src/pages/VerbPage';
+import VERBS from './src/constants/verb';
+
+import {AdjectiveType, NounType, VerbType} from './src/constants/types';
+import {isNoun, isVerb} from './src/constants/utils';
 
 const PAGE_TYPES = {
   NOUN: 'NOUN',
   ADJECTIVE: 'ADJECTIVE',
+  VERB: 'VERB',
 };
 
 const getRandomNumber = (max: number) => {
@@ -24,7 +29,11 @@ const App: () => React.ReactElement = () => {
     pageType: PAGE_TYPES.NOUN,
   });
 
-  const WORDS: (AdjectiveType | NounType)[] = [...NOUNS, ...ADJECTIVES];
+  const WORDS: (AdjectiveType | NounType | VerbType)[] = [
+    ...NOUNS,
+    ...ADJECTIVES,
+    ...VERBS,
+  ];
 
   const goToNextPage = () => {
     const delay = page.pageType === PAGE_TYPES.NOUN ? 1000 : 500;
@@ -37,7 +46,11 @@ const App: () => React.ReactElement = () => {
       const nextWord = WORDS[nextPageIndex];
       const nextPage = {
         pageIndex: nextPageIndex,
-        pageType: isNoun(nextWord) ? PAGE_TYPES.NOUN : PAGE_TYPES.ADJECTIVE,
+        pageType: isNoun(nextWord)
+          ? PAGE_TYPES.NOUN
+          : isVerb(nextWord)
+          ? PAGE_TYPES.VERB
+          : PAGE_TYPES.ADJECTIVE,
       };
 
       setPage(nextPage);
@@ -64,6 +77,12 @@ const App: () => React.ReactElement = () => {
           {page.pageType === PAGE_TYPES.ADJECTIVE && (
             <AdjectivePage
               adjective={WORDS[page.pageIndex] as AdjectiveType}
+              onPressNext={goToNextPage}
+            />
+          )}
+          {page.pageType === PAGE_TYPES.VERB && (
+            <VerbPage
+              verb={WORDS[page.pageIndex] as VerbType}
               onPressNext={goToNextPage}
             />
           )}
