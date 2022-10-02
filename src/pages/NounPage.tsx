@@ -55,11 +55,10 @@ const NounPage = ({
     handleAnswer(value);
   };
 
-  console.log('NOUN PAGE: ', noun, article, answeredCorrectly);
   return (
     <View style={styles.container}>
       <Word
-        noun={noun}
+        word={noun}
         article={(answeredCorrectly && article) || undefined}
         translation={translation}
         hasArticle
