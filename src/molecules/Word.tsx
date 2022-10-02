@@ -29,25 +29,25 @@ const styles = StyleSheet.create({
     height: '60%',
     fontWeight: '700',
   },
-  noun: {
+  word: {
     fontSize: 38,
     fontWeight: '700',
   },
 });
 
 interface Props {
-  noun: string;
+  word: string;
   article?: string;
   translation: string;
   hasArticle?: boolean;
 }
 
-const Word = ({noun, article, translation, hasArticle = false}: Props) => {
+const Word = ({word, article, translation, hasArticle = false}: Props) => {
   return (
     <View style={styles.outerContainer}>
       <View style={styles.container}>
         {hasArticle && <Text style={styles.article}>{article}</Text>}
-        <Text style={styles.noun}>{noun}</Text>
+        <Text style={styles.word}>{word}</Text>
       </View>
       <Translation translation={translation} />
     </View>
