@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {View, StyleSheet} from 'react-native';
 
 import DefiniteArticlesSection from '../molecules/DefiniteArticlesSection';
-import Noun from '../molecules/Noun';
+import Word from '../molecules/Word';
 import {NounType} from '../constants/types';
 import AnswerFeedback from '../atoms/AnswerFeedback';
 
@@ -58,10 +58,11 @@ const NounPage = ({
   console.log('NOUN PAGE: ', noun, article, answeredCorrectly);
   return (
     <View style={styles.container}>
-      <Noun
+      <Word
         noun={noun}
         article={(answeredCorrectly && article) || undefined}
         translation={translation}
+        hasArticle
       />
       <DefiniteArticlesSection handleSelection={handleArticleSelection} />
       {answeredCorrectly !== null && (
