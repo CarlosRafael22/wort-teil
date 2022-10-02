@@ -1,14 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, StyleSheet, Button} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 
 import DefiniteArticlesSection from '../molecules/DefiniteArticlesSection';
 import Noun from '../molecules/Noun';
-
-export interface NounType {
-  word: string;
-  article: string;
-  translation: string;
-}
+import {NounType} from '../constants/types';
 
 interface Props {
   noun: NounType;
