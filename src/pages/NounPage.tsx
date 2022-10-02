@@ -4,13 +4,14 @@ import {View, StyleSheet} from 'react-native';
 import DefiniteArticlesSection from '../molecules/DefiniteArticlesSection';
 import Noun from '../molecules/Noun';
 import {NounType} from '../constants/types';
+import AnswerFeedback from '../atoms/AnswerFeedback';
 
 interface Props {
   noun: NounType;
   handleAnswer: (value: string) => void;
 }
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     display: 'flex',
     justifyContent: 'center',
@@ -20,26 +21,6 @@ const style = StyleSheet.create({
     paddingTop: 200,
   },
 });
-
-const styles = StyleSheet.create({
-  container: {
-    width: 100,
-    height: 80,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 999,
-  },
-});
-
-const AnswerFeedback = ({answeredCorrectly}) => {
-  return (
-    <View
-      style={[
-        styles.container,
-        {backgroundColor: answeredCorrectly ? 'green' : 'red'},
-      ]}></View>
-  );
-};
 
 const NounPage = ({
   noun: nounObject,
@@ -76,7 +57,7 @@ const NounPage = ({
 
   console.log('NOUN PAGE: ', noun, article, answeredCorrectly);
   return (
-    <View style={style.container}>
+    <View style={styles.container}>
       <Noun
         noun={noun}
         article={(answeredCorrectly && article) || undefined}
