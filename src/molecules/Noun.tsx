@@ -1,6 +1,8 @@
 import React from 'react';
 import {View, StyleSheet, Text} from 'react-native';
 
+import Translation from '../atoms/Translation';
+
 const styles = StyleSheet.create({
   outerContainer: {
     display: 'flex',
@@ -30,12 +32,6 @@ const styles = StyleSheet.create({
     fontSize: 38,
     fontWeight: '700',
   },
-  translation: {
-    marginTop: 8,
-    marginBottom: 28,
-    fontSize: 28,
-    fontWeight: '700',
-  },
 });
 
 interface Props {
@@ -45,14 +41,13 @@ interface Props {
 }
 
 const DefiniteArticlesSection = ({noun, article, translation}: Props) => {
-  console.log('NOUN: ', article);
   return (
     <View style={styles.outerContainer}>
       <View style={styles.container}>
         <Text style={styles.article}>{article}</Text>
         <Text style={styles.noun}>{noun}</Text>
       </View>
-      <Text style={styles.translation}>{translation}</Text>
+      <Translation translation={translation} />
     </View>
   );
 };
