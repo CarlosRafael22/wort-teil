@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
     width: 60,
     marginRight: 20,
     fontSize: 18,
+    height: '60%',
     fontWeight: '700',
   },
   noun: {
@@ -38,13 +39,14 @@ interface Props {
   noun: string;
   article?: string;
   translation: string;
+  hasArticle?: boolean;
 }
 
-const DefiniteArticlesSection = ({noun, article, translation}: Props) => {
+const Word = ({noun, article, translation, hasArticle = false}: Props) => {
   return (
     <View style={styles.outerContainer}>
       <View style={styles.container}>
-        <Text style={styles.article}>{article}</Text>
+        {hasArticle && <Text style={styles.article}>{article}</Text>}
         <Text style={styles.noun}>{noun}</Text>
       </View>
       <Translation translation={translation} />
@@ -52,4 +54,4 @@ const DefiniteArticlesSection = ({noun, article, translation}: Props) => {
   );
 };
 
-export default DefiniteArticlesSection;
+export default Word;
