@@ -17,15 +17,11 @@ import {
   View,
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 
-import NounPage, {NounType} from './src/pages/NounPage';
+import NounPage from './src/pages/NounPage';
+import {NounType} from './src/constants/types';
+import NOUNS from './src/constants/noun';
 
 const Section = ({children, title}): React.ReactElement => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -52,137 +48,6 @@ const Section = ({children, title}): React.ReactElement => {
     </View>
   );
 };
-
-const OBST: NounType[] = [
-  {
-    article: 'Der',
-    word: 'Apfel',
-    translation: 'Apple',
-  },
-  {
-    article: 'Die',
-    word: 'Erdbeere',
-    translation: 'Strawberry',
-  },
-  {
-    article: 'Die',
-    word: 'Traube',
-    translation: 'Grapefruit',
-  },
-  {
-    article: 'Die',
-    word: 'Orange',
-    translation: 'Orange',
-  },
-  {
-    article: 'Die',
-    word: 'Orange',
-    translation: 'Orange',
-  },
-  {
-    article: 'Die',
-    word: 'Banane',
-    translation: 'Banana',
-  },
-  {
-    article: 'Die',
-    word: 'Ananas',
-    translation: 'Pineapple',
-  },
-  {
-    article: 'Die',
-    word: 'Zitrone',
-    translation: 'Lemon',
-  },
-];
-
-const KLEIDUNG: NounType[] = [
-  {
-    article: 'Der',
-    word: 'Anzug',
-    translation: 'Suit',
-  },
-  {
-    article: 'Die',
-    word: 'Bluse',
-    translation: 'Blouse',
-  },
-  {
-    article: 'Das',
-    word: 'Hemd',
-    translation: 'Shirt',
-  },
-  {
-    article: 'Die',
-    word: 'Hose',
-    translation: 'Pants',
-  },
-  {
-    article: 'Der',
-    word: 'Rock',
-    translation: 'Skirt',
-  },
-  {
-    article: 'Der',
-    word: 'Schuh',
-    translation: 'Shoe',
-  },
-  {
-    article: 'Der',
-    word: 'Stiefel',
-    translation: 'Boot',
-  },
-  {
-    article: 'Der',
-    word: 'Handschuh',
-    translation: 'Glove',
-  },
-];
-
-const MOBEL: NounType[] = [
-  {
-    article: 'Das',
-    word: 'Bett',
-    translation: 'Bed',
-  },
-  {
-    article: 'Das',
-    word: 'Sofa',
-    translation: 'Sofa',
-  },
-  {
-    article: 'Das',
-    word: 'Wandregal',
-    translation: 'Shelf',
-  },
-  {
-    article: 'Der',
-    word: 'Hocker',
-    translation: 'Stool',
-  },
-  {
-    article: 'Der',
-    word: 'Nachttisch',
-    translation: 'Nightstand',
-  },
-  {
-    article: 'Der',
-    word: 'Spiegel',
-    translation: 'Mirror',
-  },
-  {
-    article: 'Der',
-    word: 'Tisch',
-    translation: 'Table',
-  },
-  {
-    article: 'Der',
-    word: 'Wäschkorb',
-    translation: 'Laundry basket',
-  },
-];
-
-const NOUNS = [...OBST, ...KLEIDUNG, ...MOBEL];
 
 const getRandomNumber = max => {
   return Math.floor(Math.random() * max);
