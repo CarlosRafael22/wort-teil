@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, StyleSheet, TextInput, Text} from 'react-native';
 
 import {SentenceType} from '../constants/types';
@@ -56,6 +56,22 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: '700',
   },
+  correctSentence: {
+    display: 'flex',
+    backgroundColor: '#00FA9A',
+    borderRadius: 25,
+    height: 100,
+    margin: 20,
+    fontSize: 20,
+    fontWeight: '700',
+    paddingTop: 16,
+    paddingLeft: 10,
+  },
+  correctSentenceText: {
+    fontSize: 22,
+    marginTop: 10,
+    textAlign: 'center',
+  },
 });
 
 const BUTTON_TEXT = {
@@ -72,8 +88,16 @@ const BuildSentencePage = ({
   );
   const [typedSentence, setTypedSentence] = useState('');
   const [buttonText, setButtonText] = useState(BUTTON_TEXT.CHECK);
+  const [numberOfTries, setNumberOfTries] = useState(0);
 
   const {sentence, translatedSentence} = sentenceObj;
+  const shouldShowAnswer = numberOfTries > 2 && !answeredCorrectly;
+
+  useEffect(() => {
+    if (shouldShowAnswer) {
+      setButtonText(BUTTON_TEXT.NEXT);
+    }
+  }, [shouldShowAnswer]);
 
   const handlePress = () => {
     if (buttonText === BUTTON_TEXT.NEXT) {
@@ -84,6 +108,7 @@ const BuildSentencePage = ({
         setButtonText(BUTTON_TEXT.NEXT);
       } else {
         setAnsweredCorrectly(false);
+        setNumberOfTries(numberOfTries + 1);
         setTimeout(() => {
           setAnsweredCorrectly(null);
         }, 1000);
@@ -103,6 +128,7 @@ const BuildSentencePage = ({
             style={styles.input}
             value={typedSentence}
             onChangeText={setTypedSentence}
+            editable={!shouldShowAnswer}
           />
         </View>
 
@@ -111,6 +137,12 @@ const BuildSentencePage = ({
             <AnswerFeedback answeredCorrectly={answeredCorrectly} />
           )}
         </View>
+        {shouldShowAnswer && (
+          <View style={styles.correctSentence}>
+            <Text>The correct is:</Text>
+            <Text style={styles.correctSentenceText}>{sentence}</Text>
+          </View>
+        )}
       </View>
 
       <View style={styles.footer}>
