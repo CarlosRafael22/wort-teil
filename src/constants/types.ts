@@ -14,3 +14,10 @@ export interface VerbType {
   translation: string;
   example: string;
 }
+
+export interface SentenceType {
+  sentence: string;
+  translatedSentence: string;
+}
+
+export type DataType = NounType | AdjectiveType | VerbType | SentenceType;
