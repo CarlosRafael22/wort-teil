@@ -60,7 +60,7 @@ const CardPage = ({
         {typeof header === 'string' ? (
           <Text style={styles.headerText}>{header}</Text>
         ) : (
-          {header}
+          <>{header}</>
         )}
       </View>
       <View style={styles.body}>{body}</View>
