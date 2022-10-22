@@ -3,7 +3,7 @@ import {View, StyleSheet} from 'react-native';
 
 import Word from '../molecules/Word';
 import {AdjectiveType} from '../constants/types';
-import Button from '../atoms/Button';
+import CardPage from '../templates/CardPage';
 
 interface Props {
   adjective: AdjectiveType;
@@ -16,8 +16,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#e5e5e5',
-    paddingBottom: 200,
-    paddingTop: 200,
   },
 });
 
@@ -28,10 +26,16 @@ const AdjectivePage = ({
   const {word: adjective, translation} = adjectiveObject;
 
   return (
-    <View style={styles.container}>
-      <Word word={adjective} translation={translation} />
-      <Button text="Next" onPress={onPressNext} />
-    </View>
+    <CardPage
+      handlePress={onPressNext}
+      buttonText="Next"
+      header="Learn this adjective"
+      body={
+        <View style={styles.container}>
+          <Word word={adjective} translation={translation} />
+        </View>
+      }
+    />
   );
 };
 
