@@ -9,14 +9,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 8,
-    padding: 20,
+    padding: 12,
     borderWidth: 2,
     borderRadius: 6,
   },
   translation: {
     marginTop: 8,
     marginBottom: 8,
-    fontSize: 28,
+    fontSize: 20,
     fontWeight: '700',
   },
 });
