@@ -2,8 +2,8 @@ import React, {useState, useEffect} from 'react';
 import {View, StyleSheet, TextInput, Text} from 'react-native';
 
 import {SentenceType} from '../constants/types';
-import Button from '../atoms/Button';
 import AnswerFeedback from '../atoms/AnswerFeedback';
+import CardPage from '../templates/CardPage';
 
 interface Props {
   sentence: SentenceType;
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   translatedSentence: {
-    fontSize: 28,
+    fontSize: 24,
     fontWeight: '700',
   },
   correctSentence: {
@@ -90,6 +90,17 @@ const BuildSentencePage = ({
   const [buttonText, setButtonText] = useState(BUTTON_TEXT.CHECK);
   const [numberOfTries, setNumberOfTries] = useState(0);
 
+  const clearState = () => {
+    setAnsweredCorrectly(null);
+    setTypedSentence('');
+    setNumberOfTries(0);
+    setButtonText(BUTTON_TEXT.CHECK);
+  };
+
+  useEffect(() => {
+    clearState();
+  }, [sentenceObj]);
+
   const {sentence, translatedSentence} = sentenceObj;
   const shouldShowAnswer = numberOfTries > 2 && !answeredCorrectly;
 
@@ -116,48 +127,38 @@ const BuildSentencePage = ({
     }
   };
 
+  console.log('SENTENCE PAGE: ', sentenceObj);
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.translatedSentence}>Translate this sentence</Text>
-      </View>
-      <View style={styles.body}>
-        <View style={styles.content}>
-          <Text style={styles.translatedSentence}>{translatedSentence}</Text>
-          <TextInput
-            style={styles.input}
-            value={typedSentence}
-            onChangeText={setTypedSentence}
-            editable={!shouldShowAnswer}
-          />
-        </View>
-
-        <View style={styles.feedback}>
-          {answeredCorrectly !== null && (
-            <AnswerFeedback answeredCorrectly={answeredCorrectly} />
-          )}
-        </View>
-        {shouldShowAnswer && (
-          <View style={styles.correctSentence}>
-            <Text>The correct is:</Text>
-            <Text style={styles.correctSentenceText}>{sentence}</Text>
+    <CardPage
+      handlePress={handlePress}
+      buttonText={buttonText}
+      header="Translate this sentence"
+      body={
+        <>
+          <View style={styles.content}>
+            <Text style={styles.translatedSentence}>{translatedSentence}</Text>
+            <TextInput
+              style={styles.input}
+              value={typedSentence}
+              onChangeText={setTypedSentence}
+              editable={!shouldShowAnswer}
+            />
           </View>
-        )}
-      </View>
 
-      <View style={styles.footer}>
-        <Button
-          text={buttonText}
-          onPress={handlePress}
-          styles={{
-            buttonStyle: {
-              backgroundColor:
-                buttonText === BUTTON_TEXT.CHECK ? '#00BFFF' : '#3CB371',
-            },
-          }}
-        />
-      </View>
-    </View>
+          <View style={styles.feedback}>
+            {answeredCorrectly !== null && (
+              <AnswerFeedback answeredCorrectly={answeredCorrectly} />
+            )}
+          </View>
+          {shouldShowAnswer && (
+            <View style={styles.correctSentence}>
+              <Text>The correct is:</Text>
+              <Text style={styles.correctSentenceText}>{sentence}</Text>
+            </View>
+          )}
+        </>
+      }
+    />
   );
 };
 
