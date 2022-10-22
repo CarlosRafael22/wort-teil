@@ -47,4 +47,19 @@ const FOOD_RELATED: AdjectiveType[] = [
   },
 ];
 
-export const ADJECTIVES = [...FOOD_RELATED];
+const OBJECT_PLACE_RELATED: AdjectiveType[] = [
+  {
+    word: 'Teuer',
+    translation: 'Expensive',
+  },
+  {
+    word: 'Billig',
+    translation: 'Cheap',
+  },
+  {
+    word: 'Gemütlich',
+    translation: 'Cosy',
+  },
+];
+
+export const ADJECTIVES = [...FOOD_RELATED, ...OBJECT_PLACE_RELATED];
