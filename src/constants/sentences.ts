@@ -52,5 +52,5 @@ const MOBEL = [
   },
 ];
 
-const SENTENCES = [...OBST, MOBEL];
+const SENTENCES = [...OBST, ...MOBEL];
 export default SENTENCES;
