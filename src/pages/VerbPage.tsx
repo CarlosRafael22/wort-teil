@@ -3,7 +3,7 @@ import {View, StyleSheet, Text} from 'react-native';
 
 import Word from '../molecules/Word';
 import {VerbType} from '../constants/types';
-import Button from '../atoms/Button';
+import CardPage from '../templates/CardPage';
 
 interface Props {
   verb: VerbType;
@@ -16,8 +16,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#e5e5e5',
-    paddingBottom: 200,
-    paddingTop: 200,
   },
   example: {
     fontSize: 18,
@@ -33,11 +31,22 @@ const VerbPage = ({
   const {word: verb, translation, example} = verbObject;
 
   return (
-    <View style={styles.container}>
-      <Word word={verb} translation={translation} />
-      <Text style={styles.example}>{example}</Text>
-      <Button text="Next" onPress={onPressNext} />
-    </View>
+    <CardPage
+      handlePress={onPressNext}
+      buttonText="Next"
+      header="Learn this verb"
+      body={
+        <View style={styles.container}>
+          <Word word={verb} translation={translation} />
+          {example && (
+            <>
+              <Text>Example:</Text>
+              <Text style={styles.example}>{example}</Text>
+            </>
+          )}
+        </View>
+      }
+    />
   );
 };
 
