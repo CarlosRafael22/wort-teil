@@ -127,6 +127,56 @@ const MOBEL: NounType[] = [
     word: 'Wäschkorb',
     translation: 'Laundry basket',
   },
+  {
+    article: 'Die',
+    word: 'Spüle',
+    translation: 'The sink',
+  },
+  {
+    article: 'Der',
+    word: 'Fernseher',
+    translation: 'The TV',
+  },
+  {
+    article: 'Der',
+    word: 'Schrank',
+    translation: 'The wardrobe',
+  },
+  {
+    article: 'Die',
+    word: 'Kommode',
+    translation: 'The dresser/commode',
+  },
+  {
+    article: 'Das',
+    word: 'Bild',
+    translation: 'The picture',
+  },
+  {
+    article: 'Der',
+    word: 'Kühlschrank',
+    translation: 'The fridge',
+  },
+  {
+    article: 'Der',
+    word: 'Sessel',
+    translation: 'The armchair',
+  },
+  {
+    article: 'Das',
+    word: 'Regal',
+    translation: 'The shelf',
+  },
+  {
+    article: 'Der',
+    word: 'Herd',
+    translation: 'The cooker/stove',
+  },
+  {
+    article: 'Der',
+    word: 'Teppich',
+    translation: 'The carpet',
+  },
 ];
 
 const NOUNS = [...OBST, ...KLEIDUNG, ...MOBEL];
