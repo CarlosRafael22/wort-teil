@@ -3,7 +3,7 @@ import {View, StyleSheet} from 'react-native';
 
 import DefiniteArticlesSection from '../molecules/DefiniteArticlesSection';
 import Word from '../molecules/Word';
-import {NounType} from '../constants/types';
+import {NounType} from '../../constants/types';
 import AnswerFeedback from '../atoms/AnswerFeedback';
 
 interface Props {

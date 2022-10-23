@@ -2,7 +2,7 @@ import React from 'react';
 import {View, StyleSheet, Text} from 'react-native';
 
 import Word from '../molecules/Word';
-import {VerbType} from '../constants/types';
+import {VerbType} from '../../constants/types';
 import CardPage from '../templates/CardPage';
 
 interface Props {

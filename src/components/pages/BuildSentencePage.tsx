@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {View, StyleSheet, TextInput, Text} from 'react-native';
 
-import {SentenceType} from '../constants/types';
+import {SentenceType} from '../../constants/types';
 import AnswerFeedback from '../atoms/AnswerFeedback';
 import CardPage from '../templates/CardPage';
 

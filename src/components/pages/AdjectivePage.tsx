@@ -2,7 +2,7 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 
 import Word from '../molecules/Word';
-import {AdjectiveType} from '../constants/types';
+import {AdjectiveType} from '../../constants/types';
 import CardPage from '../templates/CardPage';
 
 interface Props {
