@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   word: {
-    fontSize: 38,
+    fontSize: 30,
     fontWeight: '700',
   },
 });
