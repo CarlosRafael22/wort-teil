@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, StyleSheet, Text} from 'react-native';
 
 const styles = StyleSheet.create({
@@ -13,7 +13,12 @@ const styles = StyleSheet.create({
 });
 
 const Header = () => {
-  return <View style={styles.outerContainer}></View>;
+  const [pageCounter, setPageCounter] = useState(0);
+  return (
+    <View style={styles.outerContainer}>
+      <Text>Page {pageCounter}</Text>
+    </View>
+  );
 };
 
 export default Header;
