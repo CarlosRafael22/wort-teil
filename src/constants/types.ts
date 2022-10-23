@@ -21,6 +21,7 @@ export interface SentenceType {
 }
 
 export type DataType = NounType | AdjectiveType | VerbType | SentenceType;
+export type WordType = Exclude<DataType, SentenceType>;
 
 export interface PageState {
   count: number;
