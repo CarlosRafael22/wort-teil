@@ -21,3 +21,9 @@ export interface SentenceType {
 }
 
 export type DataType = NounType | AdjectiveType | VerbType | SentenceType;
+
+export interface PageState {
+  count: number;
+  index: number;
+  type: string | null;
+}
