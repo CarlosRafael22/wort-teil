@@ -11,6 +11,7 @@ export const PAGE_TYPES = {
   ADJECTIVE: 'ADJECTIVE',
   VERB: 'VERB',
   SENTENCE: 'SENTENCE',
+  MATCHING: 'MATCHING',
 } as const;
 
 export const isNoun = (word: DataType): word is NounType => {
